@@ -5,22 +5,6 @@ import { preview } from '../assets'
 import { getRandomPrompt } from '../utils'
 import { FormField, Loader } from '../components'
 
-const generateImage = () => {
-
-}
-
-const handleSubmit = () => {
-
-}
-
-const handleChange = (e) => {
-
-}
-
-const handleSurpriseMe = () => {
-
-}
-
 const CreatePost = () => {
     const navigate = useNavigate()
     const [ form, setForm ] = useState({
@@ -30,6 +14,23 @@ const CreatePost = () => {
     })
     const [ generatingImg, setGeneratingImg ] = useState(false)
     const [ loading, setLoading ] = useState(false)
+
+    const generateImage = () => {
+
+    }
+    
+    const handleSubmit = () => {
+    
+    }
+    
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value })
+    }
+    
+    const handleSurpriseMe = () => {
+        const randomPrompt = getRandomPrompt(form.prompt)
+        setForm({...form, prompt: randomPrompt })
+    }
 
     return (
         <section className="max-w-7xl mx-auto">
@@ -66,7 +67,7 @@ const CreatePost = () => {
                                 src={form.photo}
                                 alt={form.prompt}
                                 className="w-full h-full object-contain"
-                            />) 
+                            />)
                             : 
                             (<img
                                 src={preview}
